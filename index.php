@@ -1,14 +1,18 @@
 <?php
-
-session_start();
-if (isset($_SESSION["alumno"])) {
-  header("location:alumno.php");
-}
-if(isset($_SESSION["profesor"])){
-  header("location:profesor.php");
-}
-if(isset($_SESSION["coordinador"])){
-   header("location:coordinador.php");
+require('functions.php');
+if(isset($_GET["action"]) && $_GET["action"] == "logout"){
+  logout();
+}else{
+  session_start();
+  if (isset($_SESSION["alumno"])) {
+    header("location:alumno.php");
+  }
+  if(isset($_SESSION["profesor"])){
+    header("location:profesor.php");
+  }
+  if(isset($_SESSION["coordinador"])){
+     header("location:coordinador.php");
+  }
 }
 
 ?>

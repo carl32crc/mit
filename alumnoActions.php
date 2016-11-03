@@ -35,42 +35,6 @@ try
 		print json_encode($jTableResult);
 	}
 
-	// $con = mysql_connect("localhost","carl","prueba123");
-	// mysql_select_db("universidad", $con);
-
-	//Getting records (listAction)
-	// if($_GET["action"] == "list")
-	// {
-
-	// 	//Get record count
-	// 	$result = mysql_query("SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa,COUNT(*) as RecordCount 
-	// 				FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-	// 				INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'");
-
-	// 	$row = mysql_fetch_array($result);
-	// 	$recordCount = $row['RecordCount'];
-
-	// 	//Get records from database
-	// 	$result = mysql_query("SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 
-	// 				FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-	// 				INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno' ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";");
-		
-	// 	//Add all records to an array
-	// 	$rows = array();
-	// 	while($row = mysql_fetch_array($result))
-	// 	{
-	// 	    $rows[] = $row;
-	// 	}
-
-	// 	//Return result to jTable
-	// 	$jTableResult = array();
-	// 	$jTableResult['Result'] = "OK";
-	// 	$jTableResult['TotalRecordCount'] = $recordCount;
-	// 	$jTableResult['Records'] = $rows;
-	// 	print json_encode($jTableResult);
-	// }
-
-
 	mysqli_close($connect);
 
 }
