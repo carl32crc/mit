@@ -1,5 +1,4 @@
 <?php
-
 try
 {
 
@@ -8,22 +7,17 @@ try
 	$idAlumno = $_SESSION["id_alumno"];
 
 	$servidor = "localhost";
-	$usuario  = "carl";
+	$usuario  = "prueba";
 	$pass     = "prueba123";
 	$DB       = "universidad";
 
 	$connect = mysqli_connect($servidor,$usuario,$pass,$DB);
-
 	if($_GET["action"] == "list"){
-
-
-		$consulta = "SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa,COUNT(*) as RecordCount 
-					FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-					INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'";
+		$consulta = "SELECT alumno.id_alumno, asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno = '$idAlumno'";
 
 		$result = mysqli_query($connect, $consulta);
+		$recordCount = mysqli_num_rows($result);
 		$row = mysqli_fetch_array($result);
-		$recordCount = $row['RecordCount'];
 
 
 		$consulta = "SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 

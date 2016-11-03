@@ -3,7 +3,7 @@
 session_start();
 
 $servidor = "localhost";
-$usuario  = "carl";
+$usuario  = "prueba";
 $pass     = "prueba123";
 $DB       = "universidad";
 
