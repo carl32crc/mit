@@ -1,17 +1,12 @@
 <?php
+require('functions.php');
 try
 {
-
 	session_start();
+	$connect = connectDB();
 
 	$idAlumno = $_SESSION["id_alumno"];
-
-	$servidor = "localhost";
-	$usuario  = "prueba";
-	$pass     = "prueba123";
-	$DB       = "universidad";
-
-	$connect = mysqli_connect($servidor,$usuario,$pass,$DB);
+	
 	if($_GET["action"] == "list"){
 		$consulta = "SELECT alumno.id_alumno, asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno = '$idAlumno'";
 
