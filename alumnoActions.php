@@ -16,20 +16,18 @@ try
 
 	if($_GET["action"] == "list"){
 
-
 		$consulta = "SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa,COUNT(*) as RecordCount 
-					FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-					INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'";
+						FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
+						INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'";
 
 		$result = mysqli_query($connect, $consulta);
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
 
-
 		$consulta = "SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 
-					FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-					INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'
-					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+						FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
+						INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'
+						ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 		$result = mysqli_query($connect, $consulta);
 

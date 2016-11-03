@@ -28,26 +28,34 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
   $numRowCoordinadores = mysqli_num_rows($resultCoordinadores);
  
   if ($numRowAlumnos == "1") {
+
     $dataAlumno = mysqli_fetch_array($resultAlumnos);
     $_SESSION["alumno"] = $dataAlumno["nombre"];
     $_SESSION["id_alumno"] = $dataAlumno["id_alumno"];
-
     echo "1";
-  }else if($numRowProfesores=="1"){
+
+  } else if($numRowProfesores=="1"){
+
     $dataProfesor = mysqli_fetch_array($resultProfesores);
     $_SESSION["profesor"] = $dataProfesor["nombre"];
-
     echo "2";
-  }else if($numRowCoordinadores=="1"){
+
+  } else if($numRowCoordinadores=="1"){
+
     $dataCoordinador = mysqli_fetch_array($resultCoordinadores);
     $_SESSION["coordinador"] = $dataCoordinador["nombre"];
-
     echo "3";
-  }else {
+
+  } else {
+
     echo "error";
+
   }
+
 } else {
+
   echo "error";
+
 }
 
 ?>
