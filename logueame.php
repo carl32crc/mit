@@ -1,13 +1,9 @@
 <?php
+require('functions.php');
 
 session_start();
 
-$servidor = "localhost";
-$usuario  = "carl";
-$pass     = "prueba123";
-$DB       = "universidad";
-
-$connect = mysqli_connect($servidor,$usuario,$pass,$DB);
+$connect = connectDB();
 
 if(isset($_POST["email"]) && isset($_POST["pass"])){
 

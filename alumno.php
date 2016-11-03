@@ -6,7 +6,7 @@ if(!isset($_SESSION["alumno"])){
 }
 
 echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
-echo '<p align=center><a href="logout.php">Logout</a></p>';
+echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
 
 ?>
 <!DOCTYPE html>
