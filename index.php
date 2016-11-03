@@ -14,7 +14,6 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
      header("location:coordinador.php");
   }
 }
-
 ?>
 
 <!DOCTYPE html>
