@@ -15,12 +15,6 @@ function logout(){
 	session_destroy();
 	header("location:index.php");
 }
-/*
-type: 
-	1 => alumno
-	2 => professor
-	3 => secretaria
-*/
 
 function getHeader(){
 	echo '<header>
@@ -34,7 +28,12 @@ function getHeader(){
 function footer(){
 	echo "<footer><span>Copy Right © MIT</span></footer>";
 }
-
+/*
+type: 
+	1 => alumno
+	2 => professor
+	3 => secretaria
+*/
 function getMenu($type, $connect){
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 

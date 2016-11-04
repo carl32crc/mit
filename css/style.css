@@ -1,24 +1,10 @@
 @CHARSET "UTF-8";
 
-*{
-	padding:0;
-	margin:0;
-}
-
-/*<div id="user_perfil">
-	<img alt="Foto_perfil" src="img/user.png">
-		<div id="user_propieties">
-		<div id="user_name">Name</div>
-			<div id="user_menu">*/
-			
 #user_perfil{
 	max-width: 200px;
-	margin-left: 2.5%;
 	background: #898a8b;
 	text-align: center;
-	position: absolute;
     height: 100%;
-    border-radius: 2%;
     float:left;
     padding: 10px 6px 0px 8px;
 }
@@ -26,4 +12,20 @@
 #user_menu ul{
 	list-style:none;
 	padding:0px;
+}
+#user_perfil img{
+	border-radius: 50%;
+}
+.content{
+	text-align: center;
+}
+
+.table-box {
+	width: 90%;
+	max-width: 800px;
+	margin: 50px auto;
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+	text-align: center;
+	margin-top: 0px;
 }

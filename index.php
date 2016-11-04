@@ -29,6 +29,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
   <body>
     <?php
       getHeader();
+
     ?>
     <div class="container">
       <div class="row">

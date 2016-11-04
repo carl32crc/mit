@@ -4,9 +4,9 @@ session_start();
 if(!isset($_SESSION["alumno"])){
   header("location:index.php");
 }
-
-echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
-echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
+require('functions.php');
+// echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
+// echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
 
 ?>
 <!DOCTYPE html>
@@ -14,20 +14,46 @@ echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
 <head>
 	<meta charset="UTF-8">
 	<title>Alumno</title>
-<link href="themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+	<link href="themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	<link href="css/styleLoginPage.css" type="text/css" rel="stylesheet" type="text/css">
 	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    
 </head>
 <body>
-	<div id="PeopleTableContainer"></div>
+	<?php 
+	getHeader();
+	//getMenu();
+
+	?>
+	<div id="general">
+		<div id="user_perfil">
+	  		<img alt="Foto_perfil" src="img/user.png"></br></br>
+			<div id="user_propieties">
+				<div id="user_name">Name</div></br>
+			    <div id="user_menu">
+			    	<ul>
+			          <li>User group</li></br>
+			          <li>User email</li></br>
+			          <li>User subject</li></br>
+			          <li>Log out</li></br>
+			        </ul>
+			    </div>
+			</div>
+		</div>
+		<div class="table-box content">
+			<div id="PeopleTableContainer"></div>
+		</div>
+	</div>
 </body>
 <script type="text/javascript">
 
 		$(document).ready(function () {
-
 		    //Prepare jTable
 			$('#PeopleTableContainer').jtable({
 				title: 'Tabla de tus notas',
