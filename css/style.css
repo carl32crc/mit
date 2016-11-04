@@ -1,10 +1,18 @@
 @CHARSET "UTF-8";
 
-html, body {
+html {
     margin: 0;
     padding: 0;
+    
+    /*overflow: hidden;*/
+}
+body{
+	margin: 0;
+    padding: 0;
     height: 100%;
-    overflow: hidden;
+}
+div{
+	border: solid 1px black;
 }
 #user_perfil{
 	width: 200px;
@@ -23,9 +31,12 @@ html, body {
 	border-radius: 50%;
 }
 .content{
+	width:calc(100% - 200px);
 	float: left;
 	padding: 150px;
+	overflow-y: scroll;
 }
 #general{
-	height: 100%;
+	height: calc(100vh - 100px);
 }
+
