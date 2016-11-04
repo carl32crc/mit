@@ -27,6 +27,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
     <link rel="stylesheet" type="text/css" href="css/styleLoginPage.css">
   </head>
   <body>
+    <div id="general">
     <?php
       getHeader();
 

@@ -38,11 +38,20 @@ function getMenu($type, $connect){
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 
 	$result = mysqli_query($connect, $consulta);
-	echo '<ul>';
-	foreach ($result as $line) {
-		echo'<li><a class="action" href="'.$line['url'].'">'.$line['nombre'].'</a></li>';
-	}
-	echo '</ul>';
+
+	echo'<div id="user_perfil">
+	  		<img alt="Foto_perfil" src="img/user.png"></br></br>
+			<div id="user_propieties">
+				<div id="user_name">'.$_SESSION['alumno'].'</div></br>
+			    <div id="user_menu">
+			    	<ul>';
+						foreach ($result as $line) {
+							echo'<li><a class="action" href="'.$line['url'].'">'.$line['nombre'].'</a></li>';
+						}
+			        echo '</ul>
+			    </div>
+			</div>
+		</div>';
 }
 
 ?>
