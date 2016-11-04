@@ -55,7 +55,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="button" name="INICIA SESIÓN" id="login" value="INICIA SESIÓN" class="btn btn-success btn-lg">
+                        <input type="button" name="login" id="login" value="INICIA SESIÓN" class="btn btn-success btn-lg">
                       </div>
                       <span id="result"></span>
                   </div>
