@@ -14,7 +14,6 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
      header("location:coordinador.php");
   }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
     <script src="js/jquery-1.12.3.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleLoginPage.css">
   </head>
   <body>
     <?php
@@ -36,22 +35,26 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
           <div class="col-md-6 col-md-offset-3">
               <div class="login-box">
                 <form method="post">
-                  <br><br>
-                  <h1><p class="text-center">Login</p></h1>
-                  <br><br>
+                  <h1>Sign in to Mit</h1>
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <input type="text" name="email" id="email" class="form-control input input-lg" placeholder="Correo Electrónico">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <input type="password" name="pass" id="pass" class="form-control input-lg" placeholder="Contraseña">
+                        <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="pass">Password</label>
-                    <input type="password" name="pass" id="pass" class="form-control">
+                    <input type="button" name="INICIA SESIÓN" id="login" value="INICIA SESIÓN" class="btn btn-success btn-lg">
                   </div>
-                  <br><br>
-                  <div class="form-group">
-                    <input type="button" name="login" id="login" value="Login" class="btn btn-success">
-                  </div>
-                  <br>
                   <span id="result"></span>
                 </form>
              </div>
