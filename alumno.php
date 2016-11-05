@@ -46,7 +46,7 @@ require('functions.php');
 			    </div>
 			</div>
 		</div>
-		<div class="table-box content">
+		<div class="content">
 			<div id="PeopleTableContainer"></div>
 		</div>
 	</div>
