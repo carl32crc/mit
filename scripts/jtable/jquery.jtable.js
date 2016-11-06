@@ -2807,7 +2807,7 @@ THE SOFTWARE.
             pageSize: 10,
 
             messages: {
-                pagingInfo: 'Showing {0} to {1} of {2} records'
+                pagingInfo: 'Resultados del {0} al {1} , de {2}.'
             }
         },
 
