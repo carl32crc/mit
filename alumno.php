@@ -97,16 +97,4 @@ require('functions.php');
 		});
 
 	</script>
-<<<<<<< HEAD
-	<script type="text/javascript">
-		$(document).ready(function () {
-			if($(".content").height() > $("#user_perfil").height()){
-				$("#user_perfil").height( $(".content").height());
-			}
-		});
-	</script>
 </html>
-
-=======
-</html>
->>>>>>> f0980a655c205990b4d7303b816d9870a6f3b06c

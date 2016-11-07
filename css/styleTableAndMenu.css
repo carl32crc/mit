@@ -2,9 +2,10 @@
 .left-bar {
     display: none;
     position: relative;
-    background: #23675E;
-    color: white;
+    background: #f5f5f5;
+    color: black;
     text-align: center;
+    z-index: 10;
 }
 
 .profile-content {
@@ -27,6 +28,7 @@
 .user{
     width: 150px;
     text-align: center;
+    border-radius: 50%;
 }
 
 .user-name{
@@ -59,22 +61,22 @@
   color: #e6e2cf;
   position: relative;
   text-shadow:1px 0 0 #000;
-  background: #0F4E45;
+  background: #2A363B;
   min-width:100%;
   width:auto;
 }
 
 #menu a:hover{
-  background-color: #659A93;
+  background-color: #59717b;
 }
 
 #menu .active{
   color: #222;
-  background-color: #A43937;
+  background-color: #da5148;
 }
 
 #menu .active:hover{
-  background-color: #A43937;
+  background-color: #FF847C;
 }
 
 .jtable-title{
@@ -157,7 +159,7 @@ td:last-child {
 
 th.text-left {
   text-align: left;
-  background: #272d36;
+  //background: #272d36;
 }
 
 th.text-center {
@@ -194,3 +196,26 @@ td.text-right {
         padding-left: 22%;
     }
 }
+
+
+
+/*
+OLD COLORS:
+MENU:
+  background: #23675E
+  non-hover green: #0F4E45
+  hover green: #659A93
+
+BODY:
+  background: #A43937
+
+HEADER & FOOTER:
+  #222  
+
+
+
+
+
+
+
+*/
