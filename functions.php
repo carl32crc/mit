@@ -26,7 +26,7 @@ function getHeader(){
 }
 
 function footer(){
-	echo "<footer><span>Copy Right © MIT</span></footer>";
+	echo "<footer><span> © MIT, 2016-2017</span></footer>";
 }
 /*
 type: 
@@ -34,24 +34,29 @@ type:
 	2 => professor
 	3 => secretaria
 */
+
 function getMenu($type, $connect){
+
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 
 	$result = mysqli_query($connect, $consulta);
+	$cont = 0;
 
-	echo'<div id="user_perfil">
-	  		<img alt="Foto_perfil" src="img/user.png"></br></br>
-			<div id="user_propieties">
-				<div id="user_name">'.$_SESSION['alumno'].'</div></br>
-			    <div id="user_menu">
-			    	<ul>';
-						foreach ($result as $line) {
-							echo'<li><a class="action" href="'.$line['url'].'">'.$line['nombre'].'</a></li>';
+	echo '	<section class="left-bar">
+				<div class="profile">
+					<img class="user" alt="foto-perfil" src="images/user.png">
+					<p class="user-name">Bienvenido/a: '.$_SESSION['alumno'].'</p>
+				</div>
+				<ul id="menu">';
+					foreach ($result as $line) {
+							$cont++;
+							if($cont===1){
+								echo '<li><a class="action active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+							}else{
+								echo '<li><a class="action" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+							}
 						}
-			        echo '</ul>
-			    </div>
-			</div>
-		</div>';
-}
-
+				echo '</ul>
+			</section>';
+	}
 ?>
