@@ -38,7 +38,7 @@ require('functions.php');
 		?>
 		<div class="content">
 			<div id="PeopleTableContainer">
-			</div>
+			</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		</div>
 	</div>
 	<?php
@@ -93,6 +93,13 @@ require('functions.php');
 
 		});
 
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if($(".content").height() > $("#user_perfil").height()){
+				$("#user_perfil").height( $(".content").height());
+			}
+		});
 	</script>
 </html>
 
