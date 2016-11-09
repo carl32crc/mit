@@ -5,15 +5,15 @@ if(!isset($_SESSION["nombre"])){
   header("location:index.php");
 }
 require('../functions.php');
-// echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
-// echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
+$connect = connectDB();
+$asignatura = getAsignatura($_GET['a'], $connect);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Alumno</title>
+	<title>Preparadas</title>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
 	
@@ -34,12 +34,11 @@ require('../functions.php');
 	?>
 	<div id="general">
 		<?php
-		$connect = connectDB();
 		getMenu(2, $connect);
 
 		?>
 		<section class="profile-content" >
-			<h1 class="page-header">Tabla de Notas</h1>
+			<h1 class="page-header">Asignatura preparada: <?=$asignatura['descripcion']?></h1>
 			<div id="PeopleTableContainer"></div>
 		</section>
 	</div>

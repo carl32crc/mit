@@ -11,7 +11,14 @@ function connectDB(){
 
 	return $connect;
 }
-
+/*
+Selecciona la información que le pidas de la base de datos.
+PARAMETROS:
+	connect (variable que retorna connectDB), 
+	arg (los argumentos que quieres que retorne),
+	table (las tablas de donde quieres que saque la info),
+	where (en caso que quieras poner un where añadelo, sino dejalo en blanco o en NULL)
+ */
 function select($connect, $arg, $table, $where = null){
 	$sql = "SELECT {$arg} FROM {$table}";
 	if ($where === null) {
@@ -26,15 +33,25 @@ function select($connect, $arg, $table, $where = null){
 //BASE DE DATOS: end
 
 //SELECT: start
+
+//devuelve todas las asignaturas que el usuario esta impartiendo PARAMETROS: nombre (nombre del usuario) y connect (variable que retorna connectDB)
 function getAsignaturasI($nombre, $connect){
 	$result = select($connect, 'a.descripcion as asignatura, a.codigo as codigo', 'imparte i, profesores p, asignaturas a', 'i.dni = p.dni AND a.codigo = i.asignatura AND p.nombre = "'.$nombre.'"');
 	return $result;
 }
-
+//devuelve todas las asignaturas que el usuario esta preparando PARAMETROS: nombre (nombre del usuario) y connect (variable que retorna connectDB)
 function getAsignaturasP($nombre, $connect){
 	$result = select($connect, 'a.descripcion as asignatura, a.codigo as codigo', 'prepara i, profesores p, asignaturas a', 'i.dni = p.dni AND a.codigo = i.asignatura AND p.nombre = "'.$nombre.'"');
 	return $result;
-}	
+}
+//devuelve toda la información de la asignatura PARAMETROS: nombre (codigo de la asignatura) y connect (variable que retorna connectDB)
+function getAsignatura($code, $connect){
+	$result = select($connect, '*', 'asignaturas', 'codigo = "'.$code.'"');
+	$row = mysqli_fetch_array($result);
+
+	return $row;
+}
+//devuelve del id del alumno PARAMETROS: nombre (nombre del alumno) y connect (variable que retorna connectDB)
 function getAlumnoId($nombre, $connect){
 	$result = select($connect, 'id_alumno as id', 'alumnos', 'nombre = "'.$_SESSION['nombre'].'" LIMIT 1');
 	$row = mysqli_fetch_array($result);
