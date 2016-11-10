@@ -5,9 +5,6 @@ if(!isset($_SESSION["nombre"])){
   header("location:index.php");
 }
 require('../functions.php');
-// echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
-// echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +45,6 @@ require('../functions.php');
 	?>
 </body>
 <script type="text/javascript">
-
-
 		$(document).ready(function () {
 
 			$('#PeopleTableContainer').jtable({
@@ -59,7 +54,7 @@ require('../functions.php');
 				sorting: true,
 				defaultSorting: 'descripcion ASC',
 				actions: {
-					listAction: 'actions.php?action=list',
+					listAction: 'alumnoActions.php?action=list',
 				},
 				fields: {
 					id_alumno: {

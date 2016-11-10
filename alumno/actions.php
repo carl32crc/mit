@@ -8,6 +8,7 @@ try
 	$connect = connectDB();
 
 	$idAlumno = getAlumnoId($_SESSION["nombre"], $connect);
+	
 	if($_GET["action"] == "list"){
 
 		$consulta = "SELECT alumno.id_alumno, asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 

@@ -24,7 +24,6 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
   $numRowCoordinadores = mysqli_num_rows($resultCoordinadores);
  
   if ($numRowAlumnos == "1") {
-
     $dataAlumno = mysqli_fetch_array($resultAlumnos);
     $_SESSION["nombre"] = $dataAlumno["nombre"];
     $_SESSION["type"] = 1;
