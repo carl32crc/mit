@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION["nombre"])){
   header("location:index.php");
 }
+
 require('../functions.php');
 // echo '<h1 align=center>Bienvenido\a alumno\a:'.$_SESSION["alumno"].'</h1>';
 // echo '<p align=center><a href="index.php?action=logout">Logout</a></p>';
