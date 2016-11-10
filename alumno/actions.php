@@ -7,6 +7,7 @@ try
 	session_start();
 	$connect = connectDB();
 
+
 	$idAlumno = getAlumnoId($_SESSION["nombre"], $connect);
 	
 	if($_GET["action"] == "list"){

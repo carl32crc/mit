@@ -5,6 +5,7 @@ session_start();
 
 $connect = connectDB();
 
+
 if(isset($_POST["email"]) && isset($_POST["pass"])){
 
   $email   = mysqli_real_escape_string($connect, $_POST["email"]);

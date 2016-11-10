@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION["nombre"])){
   header("location:index.php");
 }
+
 require('../functions.php');
 ?>
 <!DOCTYPE html>
