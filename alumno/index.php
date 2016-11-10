@@ -55,7 +55,7 @@ require('../functions.php');
 				sorting: true,
 				defaultSorting: 'descripcion ASC',
 				actions: {
-					listAction: 'alumnoActions.php?action=list',
+					listAction: 'actions.php?action=list',
 				},
 				fields: {
 					id_alumno: {
