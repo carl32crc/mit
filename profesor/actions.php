@@ -1,45 +1,59 @@
 <?php
 
+session_start();
 require('../functions.php');
-
+if(!isset($_SESSION['type']) || $_SESSION['type'] !== 2){
+	header("location:index.php");
+}
 try
 {
-	session_start();
 	$connect = connectDB();
 
-	$idAlumno = $_SESSION["id_alumno"];
-	
 	if($_GET["action"] == "list"){
+		if (isset($_GET['materia'])) {
+			//comprovar que materia existe
+			//comprovar que el professor la imparte
 
-		$consulta = "SELECT alumno.id_alumno, asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 
-						FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-						INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno = '$idAlumno'";
+			//cojer datos
+			$idAlumno = 1;
+			$consulta = "SELECT a.nombre, a.apellidos,m.nota
+						FROM matricula m, alumnos a
+						WHERE m.codigo = '{$_GET['materia']}'
+						AND m.id_alumno = a.id_alumno
+						";
 
-		$result = mysqli_query($connect, $consulta);
-		$recordCount = mysqli_num_rows($result);
-		$row = mysqli_fetch_array($result);
+			$result = mysqli_query($connect, $consulta);
+			$recordCount = mysqli_num_rows($result);
+			// foreach ($result as $row) {
+			// 	var_dump($row);
+			// }
+			// $row = mysqli_fetch_array($result);
+			// var_dump($row);
 
-		$consulta = "SELECT alumno.id_alumno,asig.descripcion,m.codigo,m.convoc,m.nota,m.baixa 
-						FROM matricula AS m INNER JOIN asignaturas as asig on asig.codigo = m.codigo 
-						INNER JOIN alumnos AS alumno ON alumno.id_alumno=m.id_alumno WHERE alumno.id_alumno='$idAlumno'
+			$consulta = "SELECT a.nombre as nombre, a.apellidos as apellidos, m.nota nota
+						FROM matricula m, alumnos a
+						WHERE m.codigo = '{$_GET['materia']}'
+						AND m.id_alumno = a.id_alumno
 						ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
-		$result = mysqli_query($connect, $consulta);
+			$result = mysqli_query($connect, $consulta);
 
-		$rows = array();
-
-		while($row = mysqli_fetch_array($result)){
-			$rows[] = $row;
+			$rows = array();
+			while($row = mysqli_fetch_array($result)){
+				$rows[] = $row;
+			}
+			
+			//imprimirlos
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['TotalRecordCount'] = $recordCount;
+			$jTableResult['Records'] = $rows;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
 		}
 
-		$jTableResult = array();
-		$jTableResult['Result'] = "OK";
-		$jTableResult['TotalRecordCount'] = $recordCount;
-		$jTableResult['Records'] = $rows;
-		print json_encode($jTableResult);
 	}
 
-	mysqli_close($connect);
 
 }
 catch(Exception $ex)
