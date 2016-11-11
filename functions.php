@@ -70,6 +70,7 @@ function logout(){
 //Retorna el header
 function getHeader($ruta = null){
 	echo '<header>
+			<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
             <img class="logo" src="'.$ruta.'images/mit.png">
             <div id="title">
               Massachusetts Institute of Technology

@@ -55,6 +55,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 			paging: true,
 			pageSize: 2,
 			sorting: true,
+			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
 			actions: {
 				listAction: 'actions.php?action=list&materia='+materia,
