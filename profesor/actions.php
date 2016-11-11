@@ -2,9 +2,8 @@
 
 session_start();
 require('../functions.php');
-if(!isset($_SESSION['type']) || $_SESSION['type'] !== 2){
-	header("location:index.php");
-}
+if(isset($_SESSION['type']) && $_SESSION['type'] === 2){
+
 try
 {
 	$connect = connectDB();
@@ -16,7 +15,7 @@ try
 
 			//cojer datos
 			$idAlumno = 1;
-			$consulta = "SELECT a.nombre, a.apellidos,m.nota
+			$consulta = "SELECT a.id_alumno, a.nombre, a.apellidos,m.nota
 						FROM matricula m, alumnos a
 						WHERE m.codigo = '{$_GET['materia']}'
 						AND m.id_alumno = a.id_alumno
@@ -24,13 +23,13 @@ try
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
-			// foreach ($result as $row) {
-			// 	var_dump($row);
-			// }
-			// $row = mysqli_fetch_array($result);
-			// var_dump($row);
+				// foreach ($result as $row) {
+				// 	var_dump($row);
+				// }
+				// $row = mysqli_fetch_array($result);
+				// var_dump($row);
 
-			$consulta = "SELECT a.nombre as nombre, a.apellidos as apellidos, m.nota nota
+			$consulta = "SELECT a.id_alumno, a.nombre, a.apellidos, m.nota
 						FROM matricula m, alumnos a
 						WHERE m.codigo = '{$_GET['materia']}'
 						AND m.id_alumno = a.id_alumno
@@ -63,6 +62,7 @@ catch(Exception $ex)
 	$jTableResult['Result'] = "ERROR";
 	$jTableResult['Message'] = $ex->getMessage();
 	print json_encode($jTableResult);
+}
 }
 
 ?>

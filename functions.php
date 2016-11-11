@@ -118,12 +118,12 @@ function getMenu($type, $connect){
 							$result = getAsignaturasP($_SESSION["nombre"], $connect);
 							echo '<li>Asignaturas preparando:</li>';
 							foreach ($result as $asignaturas) {
-								echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+								echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['codigo'].'</a></li>';
 							}
 							$result = getAsignaturasI($_SESSION["nombre"], $connect);
 							echo '<li>Asignaturas impartiendo:</li>';
 							foreach ($result as $asignaturas) {
-								echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+								echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['codigo'].'</a></li>';
 							}
 						}
 						echo '<li><a href="../index.php?action=logout">LOGOUT</a></li>';

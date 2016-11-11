@@ -51,11 +51,11 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 		var materia = '<?=$asignatura['codigo']?>';
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de tus notas',
+			title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 2,
 			sorting: true,
-			defaultSorting: 'descripcion ASC',
+			defaultSorting: 'nombre ASC',
 			actions: {
 				listAction: 'actions.php?action=list&materia='+materia,
 			},
