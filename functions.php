@@ -69,13 +69,24 @@ function logout(){
 }
 //Retorna el header
 function getHeader($ruta = null){
-	echo '<header>
-			<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+	if ($ruta == null) {
+		echo '<header>
             <img class="logo" src="'.$ruta.'images/mit.png">
             <div id="title">
               Massachusetts Institute of Technology
           	</div>
       </header>';
+	}
+	else{
+		echo '<header>
+			<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+            <img class="logo" src="'.$ruta.'images/mit.png">
+            <div id="title">
+              Massachusetts Institute of Technology
+          	</div>
+    	</header>';
+		
+	}
 }
 //Retorna el footer
 function footer(){
@@ -93,43 +104,50 @@ function getMenu($type, $connect){
 
 	$result = mysqli_query($connect, $consulta);
 	$cont = 0;
-
-	echo '	<section class="left-bar">
-				<div class="profile">
-					<img class="user" alt="foto-perfil" src="../images/user.png">
-					<p class="user-name">Bienvenido/a: '.$_SESSION["nombre"].'</p>
-				</div>
-				<ul id="menu">';
-					foreach ($result as $line) {
-							$cont++;
-							//echo 'url: '.$_SERVER['REQUEST_URI'].' | Valor a encontrar: '.$line['nombre'].'<br>';
-
-							$url = $line['url'];
-							if(strpos($_SERVER['REQUEST_URI'], $line['url']) !== false){
-								echo '<li><a class="action active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
-							}
-							elseif(substr($_SERVER['REQUEST_URI'], -1) == '/' && $line['url'] == 'index.php'){
-								echo '<li><a class="action active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
-							}
-							else{
-								echo '<li><a class="action" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
-							}
-						}
-						if($type == 2){
-							$result = getAsignaturasP($_SESSION["nombre"], $connect);
-							echo '<li>Asignaturas preparando:</li>';
-							foreach ($result as $asignaturas) {
-								echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['codigo'].'</a></li>';
-							}
-							$result = getAsignaturasI($_SESSION["nombre"], $connect);
-							echo '<li>Asignaturas impartiendo:</li>';
-							foreach ($result as $asignaturas) {
-								echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['codigo'].'</a></li>';
-							}
-						}
-						echo '<li><a href="../index.php?action=logout">LOGOUT</a></li>';
-				echo '</ul>
-			</section>';
+			echo '<nav id="cd-lateral-nav">
+			<ul class="cd-navigation">
+			<div class="profile">
+				<img class="user" alt="foto-perfil" src="https://www.buira.org/assets/images/shared/default-profile.png">
+				<p class="user-name">Bienvenido/a:'.$_SESSION["nombre"].'</p>
+			</div>
+			<ul class="cd-navigation cd-single-item-wrapper">';
+				foreach ($result as $line) {
+					$cont++;
+					$url = $line['url'];
+					if(strpos($_SERVER['REQUEST_URI'], $line['url']) !== false){
+						echo '<li><a class=" active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+					}
+					elseif(substr($_SERVER['REQUEST_URI'], -1) == '/' && $line['url'] == 'index.php'){
+						echo '<li><a class=" active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+					}
+					else{
+						echo '<li><a href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+					}
+				}
+				echo '</ul>';
+				if($type == 2){
+					$result = getAsignaturasP($_SESSION["nombre"], $connect);
+					echo '<li class="item-has-children">
+					<a href="#0">Preparando</a>
+					<ul class="sub-menu">';
+					foreach ($result as $asignaturas) {
+						echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+					}
+					echo '</ul></li>
+					<li class="item-has-children">	
+					<a href="#0">Impartiendo</a>
+					<ul class="sub-menu">';
+					$result = getAsignaturasI($_SESSION["nombre"], $connect);
+					foreach ($result as $asignaturas) {
+						echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+					}
+					echo '</ul></li>';
+				}
+				echo '<ul class="cd-navigation cd-single-item-wrapper">
+				<li><a href="#0">Configuración</a></li>
+				<li><a href="/mit/index.php?action=logout">Logout</a></li>
+				</ul> <!-- cd-single-item-wrapper -->
+				</nav>';
 	}
 
 ?>
