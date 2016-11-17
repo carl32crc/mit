@@ -70,13 +70,12 @@
   background-color: #59717b;
 }
 
-#menu .active{
-  color: #222;
-  background-color: #da5148;
+#cd-lateral-nav .active{
+  color: #e74e45;
 }
 
-#menu .active:hover{
-  background-color: #FF847C;
+#cd-lateral-nav .active:hover{
+  color: #e74e45;
 }
 
 .jtable-title{

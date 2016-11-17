@@ -112,13 +112,12 @@ function getMenu($type, $connect){
 			</div>
 			<ul class="cd-navigation cd-single-item-wrapper">';
 				foreach ($result as $line) {
-					$cont++;
 					$url = $line['url'];
-					if(strpos($_SERVER['REQUEST_URI'], $line['url']) !== false){
-						echo '<li><a class=" active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+					if(strpos($_SERVER['REQUEST_URI'], $url) !== false){
+						echo '<li><a class="active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
 					}
 					elseif(substr($_SERVER['REQUEST_URI'], -1) == '/' && $line['url'] == 'index.php'){
-						echo '<li><a class=" active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
+						echo '<li><a class="active" href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
 					}
 					else{
 						echo '<li><a href="'.$line['url'].'" >'.$line['nombre'].'</a></li>';
@@ -131,21 +130,36 @@ function getMenu($type, $connect){
 					<a href="#0">Preparando</a>
 					<ul class="sub-menu">';
 					foreach ($result as $asignaturas) {
-						echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						$url = $_SERVER['REQUEST_URI'];
+						$pos = strrpos($url, $asignaturas['codigo']);
+
+						if($pos !== false){
+						    echo '<li><a class="active" href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						}else{
+							echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						}
 					}
 					echo '</ul></li>
-					<li class="item-has-children">	
+					<li class="item-has-children">
 					<a href="#0">Impartiendo</a>
 					<ul class="sub-menu">';
 					$result = getAsignaturasI($_SESSION["nombre"], $connect);
+
 					foreach ($result as $asignaturas) {
-						echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						$url = $_SERVER['REQUEST_URI'];
+						$pos = strrpos($url, $asignaturas['codigo']);
+
+						if($pos !== false){
+						    echo '<li><a class="active" href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						}else{
+							echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						}
 					}
 					echo '</ul></li>';
 				}
 				echo '<ul class="cd-navigation cd-single-item-wrapper">
 				<li><a href="#0">Configuración</a></li>
-				<li><a href="/mit/index.php?action=logout">Logout</a></li>
+				<li><a href="../index.php?action=logout">Logout</a></li>
 				</ul> <!-- cd-single-item-wrapper -->
 				</nav>';
 	}
