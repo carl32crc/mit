@@ -52,6 +52,26 @@ try
 		}
 
 	}
+	else if($_GET["action"] == "update"){
+		if (isset($_GET['materia'])) {
+			//comprovar que materia existe
+			//comprovar que el professor la imparte
+
+			//cojer datos
+			$idAlumno = 1;
+			$consulta = "UPDATE nota
+						FROM matricula
+						WHERE m.codigo = '{$_POST['materia']}'
+						";
+
+			$result = mysqli_query($connect, $consulta);
+			//imprimirlos
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+		}
+	}
 
 
 }

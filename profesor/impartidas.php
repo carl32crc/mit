@@ -61,6 +61,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 			defaultSorting: 'nombre ASC',
 			actions: {
 				listAction: 'actions.php?action=list&materia='+materia,
+				updateAction: 'actions.php?action=update&materia='+materia
 			},
 			fields: {
 				id_alumno: {
