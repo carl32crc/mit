@@ -103,7 +103,7 @@ function getMenu($type, $connect){
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 
 	$result = mysqli_query($connect, $consulta);
-	$cont = 0;
+	$cont = 0;			
 			echo '<nav id="cd-lateral-nav">
 			<ul class="cd-navigation">
 			<div class="profile">

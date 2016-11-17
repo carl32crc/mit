@@ -36,10 +36,23 @@ require('../functions.php');
 		<section class="profile-content" >
 			<h1 class="page-header">Tabla de Notas</h1>
 			<div id="PeopleTableContainer"></div>
+			<?php 
+				$connect = connectDB();
+				$result = getAsignaturasP($_SESSION["nombre"], $connect);
+				echo '<h2>Preparadas</h2>';
+				foreach ($result as $asignaturas) {
+					echo '<div class="asig"><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
+				}
+				echo '<h2>Impartidas</h2>';
+				$result = getAsignaturasI($_SESSION["nombre"], $connect);
+				foreach ($result as $asignaturas) {
+					echo '<div class="asig"><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
+				}
+
+			?>
 		</section>
 	</main>
 	<?php
-		$connect = connectDB();
 		getMenu(2, $connect);
 		footer();
 	?>
