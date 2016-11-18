@@ -41,7 +41,7 @@ require('../functions.php');
 				$result = getAsignaturasP($_SESSION["nombre"], $connect);
 				echo '<h2>Preparadas</h2>';
 				foreach ($result as $asignaturas) {
-					echo '<div class="asig	"><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
+					echo '<div class="asig"><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
 				}
 				echo '<h2>Impartidas</h2>';
 				$result = getAsignaturasI($_SESSION["nombre"], $connect);

@@ -59,10 +59,9 @@ try
 
 			//cojer datos
 			$idAlumno = 1;
-			$consulta = "UPDATE nota
-						FROM matricula
-						WHERE m.codigo = '{$_POST['materia']}'
-						";
+			$consulta = 'UPDATE matricula 
+				SET nota = "'.$_POST['nota'].'" 
+				WHERE codigo = "'.$_GET['materia'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos

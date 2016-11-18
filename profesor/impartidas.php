@@ -26,6 +26,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	<!--JTABLES: start-->
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<script src="../scripts/jquery-1.6.4.min.js"></script>
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
@@ -66,17 +67,17 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 			fields: {
 				id_alumno: {
 					key: true,
-					create: false,
-					edit: false,
 					list: false
 				},
 				nombre: {
 					title: 'Nombre',
-					width: '20%'
+					width: '20%',
+					edit: false
 				},
 				apellidos: {
 					title: 'Apellido',
-					width: '20%'
+					width: '20%',
+					edit: false
 				},
 				nota: {
 					title: 'Nota',

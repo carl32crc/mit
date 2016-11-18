@@ -132,11 +132,12 @@ function getMenu($type, $connect){
 					foreach ($result as $asignaturas) {
 						$url = $_SERVER['REQUEST_URI'];
 						$pos = strrpos($url, $asignaturas['codigo']);
+						$preparadas = strrpos($url, 'preparadas');
 
-						if($pos !== false){
-						    echo '<li><a class="active" href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+						if($pos !== false && $preparadas !== false){
+						    echo '<li><a class="active" href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
 						}else{
-							echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
+							echo '<li><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
 						}
 					}
 					echo '</ul></li>
@@ -149,7 +150,7 @@ function getMenu($type, $connect){
 						$url = $_SERVER['REQUEST_URI'];
 						$pos = strrpos($url, $asignaturas['codigo']);
 
-						if($pos !== false){
+						if($pos !== false  && $preparadas === false){
 						    echo '<li><a class="active" href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
 						}else{
 							echo '<li><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></li>';
